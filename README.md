@@ -1,4 +1,4 @@
-# EnhanceNet
+#  Smoke Simulation with CNN(EnhanceNet)
 
 Tensorflow implementation of EnhanceNet for a magnification ratio of 4.
 
