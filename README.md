@@ -8,18 +8,7 @@ Tensorflow implementation of EnhanceNet for a magnification ratio of 4.
 + So, we changed hyper-parameters for loss combination.
 
 ### Results
-<table>
-<tr align="center">
-<td>Input</td>
-<td>Enet-E</td>
-<td>Enet-PAT</td>
-</tr>
-<tr align="center">
-<td><img src="outputs/Input.png"></td>
-<td><img src="outputs/ENet-E.png"></td>
-<td><img src="outputs/ENet-PAT.png"></td>
-</tr>
-</table>
+Download the 'result2.avi' file
 
 ### How to train?
 
@@ -34,8 +23,13 @@ unzip train2017.zip
 wget http://download.tensorflow.org/models/vgg_19_2016_08_28.tar.gz
 tar xvzf vgg_19_2016_08_28.tar.gz
 ```
+3. Prepare 64x64 images
+```
+Before performing a smoke simulation, 
+prepare a divided 64x64 size image in units of simulation frames and store it in the input folder
+```
 
-3. Do train!
+4. Do train!
 ```
 # ENet-E
 python3 train_SR.py --model=enhancenet --upsample=nearest \
@@ -64,6 +58,11 @@ python3 test_SR.py --model_path=/your/pretrained/model/folder \
 --image_path=/your/image/folder \
 --save_path=/generated_image/will/be/saved/here \
 --run_gpu=0
+```
+
+### How to Merge?
+```
+After testing the images, merge the images using the txtMerge file
 ```
 
 ### Reference
