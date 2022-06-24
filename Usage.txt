@@ -1,0 +1,21 @@
+###Training
+# ENet-E
+python train_SR.py --model=enhancenet --upsample=nearest --recon_type=residual --SR_scale=4 --run_gpu=0 --batch_size=32 --num_readers=4 --input_size=32 --losses=mse --learning_rate=0.0001 --save_path=modelsavedE --image_path=train2017/*.jpg
+
+# ENet-PAT
+python train_SR.py --model=enhancenet --upsample=nearest --recon_type=residual --SR_scale=2 --run_gpu=0 --batch_size=32 --num_readers=4 --input_size=32 --losses=perceptual,texture,adv --adv_ver=ver2 --adv_gen_w=0.003 --learning_rate=0.0001 --save_path=modelsavedPAT --image_path=train2017/*.jpg --vgg_path=vgg_19.ckpt
+
+###Test E / PAT
+python test_SR.py --model_path=modelsavedPAT --image_path=Train_data --save_path=outputs/SmokeTestData --run_gpu=0
+
+#modelsavedE
+
+#Test txt
+python test_SR.py --model_path=modelsavedPAT --save_path=outputs/SmokeTestData --run_gpu=0 --scale=2
+# CircleTestData2
+#modelsavedE
+
+python run_inference.py --checkpoint_path="/Users/jhkimMultiGpus/Desktop/Ch09-Image_Captioning/im2txt/im2txt/model/train/model2.ckpt-2000000" --vocab_file="/Users/jhkimMultiGpus/Desktop/Ch09-Image_Captioning/im2txt/im2txt/data/mscoco/word_counts.txt" --input_files="/Users/jhkimMultiGpus/Desktop/Ch09-Image_Captioning/im2txt/im2txt/data/mscoco/raw-data/val2014/COCO_val2014_000000224477.jpg"
+
+
+python train.py --input_file_pattern="${MSCOCO_DIR}/train-?????-of-00256" --inception_checkpoint_file="${INCEPTION_CHECKPOINT}" --train_dir="${MODEL_DIR}/train" --train_inception=false --number_of_steps=100000
